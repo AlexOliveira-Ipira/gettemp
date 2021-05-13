@@ -4,10 +4,10 @@ class EpsodeModel(alchemy.Model):
     __tablename__ = 'epsode'
     
     
-    id = alchemy.column(alchemy.integer, primery_key= True)
-    name = alchemy.column(alchemy.String(80))
+    id = alchemy.Column(alchemy.Integer, primary_key = True)
+    name = alchemy.Column(alchemy.String(80))
     sesson = alchemy.Column(alchemy.Integer)
-    show_id = alchemy.column(alchemy.Interger, alchemy.Foremkey('shows.id'))
+    show_id = alchemy.Column(alchemy.Integer, alchemy.ForeignKey('shows.id'))
     
     
     def __init__(self, name, sesson, show_id):

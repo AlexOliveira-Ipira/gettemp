@@ -1,5 +1,5 @@
 from date import alchemy
-from . import epsods
+from . import epsod
 
 class ShowModel(alchemy.Model):
     __tablename__ = 'shows'
@@ -8,13 +8,13 @@ class ShowModel(alchemy.Model):
     id = alchemy.Column(alchemy.Integer, primary_key = True)
     name = alchemy.Column(alchemy.String(80))
     
-    epsode = alchemy.relationship(epsods.EpsodeModel, lazy='dynamic')
+    epsode = alchemy.relationship(epsod.EpsodeModel, lazy='dynamic')
     
     def __init__(self, name):
         self.name = name
         
     def json(self):
-        return {'id' : 'self.id', 'name' : 'self.name'}
+        return {'id': 'self.id', 'name': 'self.name'}
     
     def saveDB(self):
         alchemy.session.add(self)
@@ -22,9 +22,9 @@ class ShowModel(alchemy.Model):
         
     @classmethod
     def find_by_name(cls, name):
-        cls.query.filter.by(name=name).first()
+        return cls.query.filter.by(name=name).first()
         
     @classmethod
     def find_by_id(cls, id):
-        cls.query.filter.by(id=id).first()
+        return cls.query.filter.by(id=id).first()
         
